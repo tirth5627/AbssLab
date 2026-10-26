@@ -1,0 +1,8 @@
+Method,Components,Reconstruction MSE,Relative Frobenius Error,PSNR (dB),Feature Storage / Image,Model Storage,Notes
+PCA,10,0.010302,21.01%,19.87 dB,40 B (0.04 KB),442.75 KB,Subtracted mean face (centered). Exact orthogonal inverse transform.
+Truncated SVD,10,0.010372,21.08%,19.84 dB,40 B (0.04 KB),442.75 KB,Uncentered data matrix. Projects on leading right singular vectors.
+PCA,20,0.008387,18.95%,20.76 dB,80 B (0.08 KB),845.25 KB,Subtracted mean face (centered). Exact orthogonal inverse transform.
+Truncated SVD,20,0.008409,18.98%,20.75 dB,80 B (0.08 KB),845.25 KB,Uncentered data matrix. Projects on leading right singular vectors.
+PCA,39,0.006957,17.26%,21.58 dB,156 B (0.15 KB),1610.00 KB,Subtracted mean face (centered). Exact orthogonal inverse transform.
+Truncated SVD,39,0.006944,17.25%,21.58 dB,156 B (0.15 KB),1610.00 KB,Uncentered data matrix. Projects on leading right singular vectors.
+LDA,39,N/A,N/A,N/A,156 B (0.15 KB),1610.00 KB,"Not primary: LDA optimizes class discriminability, not image reconstruction."

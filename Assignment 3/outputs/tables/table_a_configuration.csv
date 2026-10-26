@@ -1,0 +1,13 @@
+Parameter,Value
+Dataset,AT&T / ORL Database of Faces
+Total Images / Identities,400 images / 40 people
+Images per Identity,10
+Image Dimensions,92 x 112 pixels (Grayscale PGM)
+Features per Image (Flattened),10304
+Pixel Normalization Scale,"[0.0, 1.0] (float32)"
+Train / Test Split,5 train + 5 test per identity (200 train / 200 test)
+Split Repetitions,10 randomized splits with fixed recorded seeds
+Random Seeds,"[42, 101, 202, 303, 404, 505, 606, 707, 808, 909]"
+Primary Classifier,"1-Nearest Neighbor (1-NN, Euclidean distance)"
+Secondary Classifier,Linear Support Vector Machine (C=1.0)
+Component Counts Evaluated,"[5, 10, 20, 30, 39]"

@@ -1,0 +1,4 @@
+Method,Best Components (k),Peak Mean Accuracy (%),Macro-F1,Fit Time (ms),Compression vs Raw
+PCA,100,94.95% ± 1.40%,0.9482 ± 0.0145,190.28 ms,103.0x
+Truncated SVD,100,94.95% ± 1.54%,0.9481 ± 0.0158,191.67 ms,103.0x
+LDA,39,95.20% ± 1.69%,0.9499 ± 0.0177,211.15 ms,264.2x

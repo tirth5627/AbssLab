@@ -1,0 +1,4 @@
+Method,Components Evaluated,Fit Time (ms),Transform Time / Image (µs),Model Parameter Storage,Feature Compression Ratio
+PCA,39,56.43 ± 13.82 ms,13.2 ± 2.7 µs,1610.00 KB,264.2x
+Truncated SVD,39,68.74 ± 17.70 ms,12.7 ± 2.0 µs,1610.00 KB,264.2x
+LDA,39,211.15 ± 43.01 ms,22.9 ± 4.1 µs,1610.00 KB,264.2x

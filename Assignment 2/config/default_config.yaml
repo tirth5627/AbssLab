@@ -1,0 +1,79 @@
+# ============================================================
+# Default Configuration — Facial Biometrics Scraped Benchmark
+# ============================================================
+
+# --- Dataset Scraping ---
+scraping:
+  source: "thispersondoesnotexist"    # Primary face source
+  num_subjects: 200                   # Number of distinct subjects
+  images_per_subject: 2               # Images per subject (temporal gap)
+  request_delay_sec: 1.0              # Rate-limiting delay between requests
+  max_retries: 3                      # Retry count on failed downloads
+  retry_backoff: 2.0                  # Exponential backoff multiplier
+  timeout_sec: 15                     # HTTP request timeout
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) FaceBiometricResearch/1.0"
+
+# --- Image Processing ---
+image:
+  target_size: [256, 256]             # Output dimensions (H, W)
+  format: "JPEG"                      # Output format
+  quality: 95                         # JPEG quality
+
+# --- Noise Injection ---
+noise:
+  gaussian:
+    mean: 0
+    sigma: 25                         # Standard deviation of Gaussian noise
+  salt_pepper:
+    amount: 0.05                      # Fraction of pixels corrupted
+    salt_vs_pepper: 0.5               # Ratio of salt to pepper
+
+# --- Preprocessing ---
+preprocessing:
+  clahe:
+    clip_limit: 2.0                   # CLAHE clip limit
+    tile_grid_size: [8, 8]            # CLAHE tile grid
+  normalize: true                     # Normalize to [0, 1]
+  color_space: "RGB"                  # Input color space
+
+# --- Feature Extraction ---
+features:
+  handcrafted:
+    histogram_bins: 32                # Bins per color channel
+    lbp_radius: 1                     # LBP radius
+    lbp_n_points: 8                   # LBP sampling points
+  deep:
+    model: "facenet"                  # facenet | resnet
+    pretrained: "vggface2"            # Pre-trained weights
+    device: "auto"                    # auto | cpu | cuda
+    batch_size: 16                    # Batch size (tuned for 4GB VRAM)
+    embedding_dim: 512                # Output embedding dimension
+
+# --- Matching ---
+matching:
+  num_impostor_pairs: 1000            # Number of impostor pairs to sample
+  similarity_metric: "cosine"         # cosine | euclidean
+  random_seed: 42                     # For reproducible pair sampling
+
+# --- Evaluation ---
+evaluation:
+  threshold_step: 0.001               # Threshold sweep granularity
+  threshold_range: [0.0, 1.0]         # Min and max threshold
+  fmr_targets: [0.001, 0.0001]       # Operational FMR targets (0.1%, 0.01%)
+
+# --- Paths ---
+paths:
+  data_dir: "data"
+  raw_dir: "data/raw"
+  metadata_dir: "data/metadata"
+  output_dir: "outputs"
+  figures_dir: "outputs/figures"
+  reports_dir: "outputs/reports"
+
+# --- Metadata Generation ---
+metadata:
+  age_range: [18, 80]                 # Age distribution range
+  age_gap_range: [1, 5]               # Simulated temporal gap in years
+  genders: ["Male", "Female"]
+  ethnicities: ["Asian", "Caucasian", "African", "Hispanic"]
+  random_seed: 42                     # For reproducible metadata

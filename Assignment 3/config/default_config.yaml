@@ -1,0 +1,36 @@
+# Configuration for Assignment 3: PCA vs Truncated SVD vs LDA on ORL Face Dataset
+
+dataset:
+  name: "AT&T / ORL Database of Faces"
+  data_dir: "data"
+  image_width: 92
+  image_height: 112
+  num_identities: 40
+  images_per_identity: 10
+  total_images: 400
+  flattened_dim: 10304
+  scale: [0.0, 1.0]
+
+experiment:
+  train_samples_per_identity: 5
+  test_samples_per_identity: 5
+  train_total: 200
+  test_total: 200
+  num_splits: 10
+  random_seeds: [42, 101, 202, 303, 404, 505, 606, 707, 808, 909]
+  common_components: [5, 10, 20, 30, 39]
+  extended_components: [5, 10, 20, 30, 39, 50, 75, 100, 150]
+  variance_thresholds: [0.90, 0.95]
+  embedding_subjects_to_plot: [1, 5, 10, 15, 20, 25, 30, 35]
+
+classifiers:
+  primary: "1-NN"
+  primary_metric: "euclidean"
+  secondary: "LinearSVM"
+  svm_C: 1.0
+
+paths:
+  output_dir: "outputs"
+  figures_dir: "outputs/figures"
+  tables_dir: "outputs/tables"
+  docs_dir: "docs"
